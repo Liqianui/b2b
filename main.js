@@ -5,15 +5,15 @@ import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 
- 
+ import pageComponent from './pages/globalComponents/pageComponent.vue'
+  import navData from './pages/globalComponents/navData.vue'
+    import bottomNav from './pages/globalComponents/bottomNav.vue'
  
  
 // #ifndef VUE3
 import Vue from 'vue'
-import searchData from './pages/global/searchData.vue'
 import './uni.promisify.adaptor'
 Vue.config.productionTip = false
-Vue.component('search-data', searchData);
 App.mpType = 'app'
  
 const app = new Vue({
@@ -31,8 +31,13 @@ export function createApp() {
   for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
   }
+  app.component('pageComponent',pageComponent)
+    app.component('navData',navData)
+	 app.component('bottomNav',bottomNav)
+	  
   app.use(uviewPlus)
   app.use(ElementPlus)
+  app.use(bottomNav)
   return {
     app
   }
